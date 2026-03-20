@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Device Name] - Assembly Guide</title>
+    <style>
+        /* Clean, modern styling for readability */
+        :root {
+            --primary-color: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --border-color: #e2e8f0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 { color: #0f172a; }
+
+        /* The selection panel */
+        .config-panel {
+            background-color: #e0f2fe;
+            border: 1px solid #bae6fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .config-group {
+            margin-bottom: 15px;
+        }
+
+        .config-group label {
+            margin-right: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Instruction cards */
+        .step-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Utility class to hide unselected options */
+        .hidden {
+            display: none;
+        }
+
+        code {
+            background-color: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .placeholder {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>[Device Name] Instructions</h1>
+    <p>Welcome! Select your build options below to generate your custom assembly guide.</p>
+
+    <div class="config-panel">
+        <h3>🛠️ Your Build Configuration</h3>
+        
+        <div class="config-group">
+            <p style="margin: 0 0 5px 0;"><strong>Sourcing Method:</strong></p>
+            <label><input type="radio" name="sourcing" value="kit" checked onchange="updateGuide()"> Digital Lab Kit</label>
+            <label><input type="radio" name="sourcing" value="diy" onchange="updateGuide()"> DIY Sourcing</label>
+        </div>
+
+        <div class="config-group">
+            <p style="margin: 0 0 5px 0;"><strong>Device Version:</strong></p>
+            <label><input type="radio" name="version" value="standard" checked onchange="updateGuide()"> Standard</label>
+            <label><input type="radio" name="version" value="rechargeable" onchange="updateGuide()"> Rechargeable</label>
+        </div>
+    </div>
+
+    <div id="instructions">
+
+        <div class="step-card">
+            <h2>Phase 1: Parts & Sourcing</h2>
+            
+            <div id="sourcing-kit">
+                <p>You have chosen the easiest route! You will get all components pre-prepared from the digital lab.</p>
+                <ul>
+                    <li>Request your complete electronics, hardware, and motor kit here: <a href="#" class="placeholder">[Insert Digital Lab Link]</a></li>
+                </ul>
+            </div>
+
+            <div id="sourcing-diy" class="hidden">
+                <p>You are sourcing everything from scratch. Here is what you need:</p>
+                <ul>
+                    <li><strong>PCB:</strong> Order the electrical components and PCB directly using our files here: <a href="#" class="placeholder">[Insert PCB File Link]</a></li>
+                    <li><strong>Components:</strong> Order all required hardware via our Bill of Materials: <a href="#" class="placeholder">[Insert BOM Link]</a></li>
+                </ul>
+                <h3>Wiring Preparation (JST Connections)</h3>
+                <ol>
+                    <li>Cut your wires to the appropriate lengths.</li>
+                    <li>Carefully strip the ends of the wires.</li>
+                    <li>Crimp the JST pins onto the exposed wire ends.</li>
+                    <li>Insert the crimped pins into the JST plastic housings.</li>
+                    <li>Solder the opposite ends to the corresponding components (e.g., motor, button) as detailed in Phase 3.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <h2>Phase 2: Printer Set-up</h2>
+            <p>We have optimized these files for easy printing.</p>
+            <ul>
+                <li><strong>Infill:</strong> 10% - 20%</li>
+                <li><strong>Supports:</strong> Required</li>
+                <li><strong>Location/Orientation:</strong> Place flat on the printer bed.</li>
+                <li><strong>Pre-spliced setups:</strong> We have ready-to-print GCODE files for common printers here: <a href="#" class="placeholder">[Insert Spliced Files Link]</a></li>
+            </ul>
+
+            <div id="print-standard">
+                <p><strong>Files:</strong> Download the Standard Enclosure STL files here: <a href="#" class="placeholder">[Insert Standard STL Link]</a></p>
+            </div>
+            
+            <div id="print-rechargeable" class="hidden">
+                <p><strong>Files:</strong> Download the Rechargeable Enclosure STL files here: <a href="#" class="placeholder">[Insert Rechargeable STL Link]</a></p>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <h2>Phase 3: Code & Connections</h2>
+            <h3>1. Flashing Code</h3>
+            <p>Download all files from our GitHub: <a href="#" class="placeholder">[Insert GitHub Link]</a>. Flash the firmware to your MCU before assembling the device.</p>
+            
+            <h3>2. PCB Connections</h3>
+            <p>Connect your components to the correct ports on the PCB:</p>
+            <ul>
+                <li><strong>Motor:</strong> Connect to <span class="placeholder">[Port X]</span></li>
+                <li><strong>Button:</strong> Connect to <span class="placeholder">[Port Y]</span></li>
+                <li><strong>Battery:</strong> Connect to <span class="placeholder">[Port Z]</span></li>
+            </ul>
+        </div>
+
+        <div class="step-card">
+            <h2>Phase 4: Physical Assembly</h2>
+            <ol>
+                <li><strong>PCB:</strong> Slide into the designated PCB slot inside the enclosure.</li>
+                <li><strong>Battery:</strong> Place into the battery compartment.</li>
+                <li><strong>Button:</strong> Push through the top cutout until it seats perfectly.</li>
+                <li><strong>Motor:</strong> Place in the motor mount. <em>Note: This will likely need to be glued down for stability.</em></li>
+                <li><strong>Sealing:</strong> Once tested, seal the enclosure halves together using Epoxy (or your preferred adhesive).</li>
+            </ol>
+        </div>
+
+        <div class="step-card">
+            <h2>Phase 5: Straps & Ice Packs</h2>
+            <ul>
+                <li><strong>Straps:</strong> Slide the straps through the side loops, fold them over, and sew them securely in place.</li>
+                <li><strong>Ice Packs:</strong> Insert the elastic bands into the back slots. These bands will hold the ice pack securely against the device.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        function updateGuide() {
+            // Get current selected values
+            const sourcingOption = document.querySelector('input[name="sourcing"]:checked').value;
+            const versionOption = document.querySelector('input[name="version"]:checked').value;
+
+            // Update Sourcing Section
+            if (sourcingOption === 'kit') {
+                document.getElementById('sourcing-kit').classList.remove('hidden');
+                document.getElementById('sourcing-diy').classList.add('hidden');
+            } else {
+                document.getElementById('sourcing-kit').classList.add('hidden');
+                document.getElementById('sourcing-diy').classList.remove('hidden');
+            }
+
+            // Update Printing Section
+            if (versionOption === 'standard') {
+                document.getElementById('print-standard').classList.remove('hidden');
+                document.getElementById('print-rechargeable').classList.add('hidden');
+            } else {
+                document.getElementById('print-standard').classList.add('hidden');
+                document.getElementById('print-rechargeable').classList.remove('hidden');
+            }
+        }
+
+        // Run once on load to ensure correct state
+        updateGuide();
+    </script>
+</body>
+</html>
