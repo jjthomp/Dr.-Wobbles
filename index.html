@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Device Name] - Assembly Guide</title>
+    <title>Dr. Wobbles - Assembly Guide</title>
     <style>
-        /* Clean, modern styling for readability */
+        /* Updated custom color palette based on logos */
         :root {
-            --primary-color: #2563eb;
-            --bg-color: #f8fafc;
+            --primary-color: #004d61; /* Deep teal/blue from Digital Lab */
+            --secondary-color: #8cb8d1; /* Light blue from Digital Lab */
+            --bg-color: #f4f8fa; /* Soft cool blue background */
             --card-bg: #ffffff;
             --text-main: #334155;
-            --border-color: #e2e8f0;
+            --border-color: #cddce3;
         }
         
         body {
@@ -24,12 +25,41 @@
             padding: 20px;
         }
 
-        h1, h2, h3 { color: #0f172a; }
+        h1, h2, h3 { color: var(--primary-color); }
+
+        /* --- NEW HEADER STYLES --- */
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .header-title-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .seal-logo {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+
+        .digital-lab-logo {
+            height: 45px;
+            object-fit: contain;
+        }
 
         /* The selection panel */
         .config-panel {
-            background-color: #e0f2fe;
-            border: 1px solid #bae6fd;
+            background-color: #e6f0f5;
+            border: 1px solid var(--secondary-color);
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 30px;
@@ -52,7 +82,7 @@
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         /* Utility class to hide unselected options */
@@ -61,24 +91,32 @@
         }
 
         code {
-            background-color: #f1f5f9;
+            background-color: #e6f0f5;
+            color: var(--primary-color);
             padding: 2px 6px;
             border-radius: 4px;
         }
 
         .placeholder {
-            color: var(--primary-color);
+            color: var(--secondary-color);
             font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <h1>[Device Name] Instructions</h1>
+    <header class="site-header">
+        <div class="header-title-container">
+            <img src="Seal Options Capstone.png" alt="Dr. Wobbles Logo" class="seal-logo">
+            <h1 style="margin: 0;">Dr. Wobbles' Assembly Instructions</h1>
+        </div>
+        <img src="666740e7559b77d7383224b4_Frame 27731.png" alt="Digital Lab Logo" class="digital-lab-logo">
+    </header>
+
     <p>Welcome! Select your build options below to generate your custom assembly guide.</p>
 
     <div class="config-panel">
-        <h3>🛠️ Your Build Configuration</h3>
+        <h3 style="margin-top: 0;">🛠️ Your Build Configuration</h3>
         
         <div class="config-group">
             <p style="margin: 0 0 5px 0;"><strong>Sourcing Method:</strong></p>
@@ -156,25 +194,78 @@
         </div>
 
         <div class="step-card">
-            <h2>Phase 4: Physical Assembly</h2>
-            <ol>
-                <li><strong>PCB:</strong> Slide into the designated PCB slot inside the enclosure.</li>
-                <li><strong>Battery:</strong> Place into the battery compartment.</li>
-                <li><strong>Button:</strong> Push through the top cutout until it seats perfectly.</li>
-                <li><strong>Motor:</strong> Place in the motor mount. <em>Note: This will likely need to be glued down for stability.</em></li>
-                <li><strong>Sealing:</strong> Once tested, seal the enclosure halves together using Epoxy (or your preferred adhesive).</li>
-            </ol>
-        </div>
+            <h2>Phase 4: Final Assembly</h2>
+            <p>Follow these steps carefully to assemble the device. Reference the images for exact placement.</p>
 
-        <div class="step-card">
-            <h2>Phase 5: Straps & Ice Packs</h2>
-            <ul>
-                <li><strong>Straps:</strong> Slide the straps through the side loops, fold them over, and sew them securely in place.</li>
-                <li><strong>Ice Packs:</strong> Insert the elastic bands into the back slots. These bands will hold the ice pack securely against the device.</li>
-            </ul>
-        </div>
+            <div class="assembly-step" style="margin-bottom: 30px;">
+                <h3>1. Materials Overview</h3>
+                <p>Gather all your 3D printed parts, the prepared PCB, battery, motor, and hardware.</p>
+                <img src="IFU-Page-1.drawio.png" alt="All materials laid out" style="max-width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #e2e8f0;">
+            </div>
 
-    </div>
+            <div class="assembly-step" style="margin-bottom: 30px;">
+                <h3>2. Battery Insertion</h3>
+                <p>Place the battery securely into the lower compartment of the enclosure.</p>
+                <img src="images/2-battery-insertion.jpg" alt="Battery placed in enclosure" style="max-width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #e2e8f0;">
+            </div>
+
+            <div class="assembly-step" style="margin-bottom: 30px;">
+                <h3>3. Circuit Placement</h3>
+                <p>Slide the main PCB into the primary slot.</p>
+                <img src="IFU-Page-2.drawio.png" alt="PCB placed in enclosure" style="max-width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #e2e8f0;">
+            </div>
+
+            <div class="assembly-step" style="margin-bottom: 30px;">
+                <h3>4. Circuit Holder Placement</h3>
+                <p>Position the 3D-printed circuit holder over the PCB to lock it into place.</p>
+                <img src="IFU-Copy of Page-2.drawio.png" alt="Circuit holder securing the PCB" style="max-width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #e2e8f0;">
+            </div>
+
+            <div class="assembly-step" style="margin-bottom: 30px;">
+                <h3>5. Motor Placement</h3>
+                <p>Seat the motor in its cradle mount. Apply a small amount of glue if necessary to prevent rattling.</p>
+                <img src="images/5-motor-placement.jpg" alt="Motor seated in cradle" style="max-width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #e2e8f0;">
+            </div>
+
+            <div class="assembly-step" style="margin-bottom: 30px;">
+                <h3>6. Wire Connections</h3>
+                <p>Connect the JST terminals to the board. Ensure polarities match the diagram.</p>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <div style="flex: 1;">
+                        <img src="images/6a-wire-connections.jpg" alt="Wire connection step A" style="max-width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+                        <p style="font-size: 0.9em; text-align: center; margin-top: 5px;">Connection A</p>
+                    </div>
+                    <div style="flex: 1;">
+                        <img src="images/6b-wire-connections.jpg" alt="Wire connection step B" style="max-width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+                        <p style="font-size: 0.9em; text-align: center; margin-top: 5px;">Connection B</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="assembly-step" style="margin-bottom: 30px;">
+                <h3>7. Close Enclosure</h3>
+                <p>Align the top half of the shell and press the device closed. Check that no wires are pinched in the seam.</p>
+                <img src="images/7-close-device.jpg" alt="Closing the device halves" style="max-width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #e2e8f0;">
+            </div>
+
+            <div class="assembly-step" style="margin-bottom: 30px;">
+                <h3>8. Strap Insertion</h3>
+                <p>Slide the straps through the side loops, fold them over, and sew them securely.</p>
+                <img src="images/8-strap-insertion.jpg" alt="Inserting the fabric straps" style="max-width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #e2e8f0;">
+            </div>
+
+            <div class="assembly-step" style="margin-bottom: 30px;">
+                <h3>9. Elastic Band Placement (For Ice Pack)</h3>
+                <p>Insert the elastic bands through the rear slots to hold the ice pack securely against the back.</p>
+                <img src="images/9-elastic-band.jpg" alt="Placing the elastic bands" style="max-width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #e2e8f0;">
+            </div>
+
+            <div class="assembly-step" style="margin-bottom: 10px;">
+                <h3>10. Sticker Placement</h3>
+                <p>Apply the final seal face sticker to the front of the enclosure to finish the device!</p>
+                <img src="images/10-sticker-placement.jpg" alt="Applying the final front sticker" style="max-width: 100%; border-radius: 8px; margin-top: 10px; border: 1px solid #e2e8f0;">
+            </div>
+        </div>
 
     <script>
         function updateGuide() {
