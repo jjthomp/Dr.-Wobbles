@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Wobbles - Assembly Guide</title>
+    <style>
+        :root {
+            --primary-color: #004d61;
+            --secondary-color: #8cb8d1;
+            --bg-color: #f4f8fa;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --border-color: #cddce3;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 { color: var(--primary-color); }
+
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .header-title-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .seal-logo {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+
+        .digital-lab-logo {
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .config-panel {
+            background-color: #e6f0f5;
+            border: 1px solid var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .config-group {
+            margin-bottom: 15px;
+        }
+
+        .config-group label {
+            margin-right: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .step-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        code {
+            background-color: #e6f0f5;
+            color: var(--primary-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .placeholder {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .assembly-step {
+            margin-bottom: 30px;
+        }
+
+        .assembly-step img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Tabs */
+        .tab-nav {
+            display: flex;
+            border-bottom: 2px solid var(--secondary-color);
+            margin-bottom: 30px;
+            gap: 4px;
+        }
+
+        .tab-btn {
+            padding: 10px 24px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--text-main);
+            cursor: pointer;
+            border-radius: 6px 6px 0 0;
+            transition: background 0.15s;
+        }
+
+        .tab-btn:hover {
+            background-color: #e6f0f5;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            background-color: #e6f0f5;
+        }
+
+        .tab-page {
+            display: none;
+        }
+
+        .tab-page.active {
+            display: block;
+        }
+
+        /* Operating instructions */
+        .op-steps {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            counter-reset: op-counter;
+        }
+
+        .op-steps li {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            counter-increment: op-counter;
+        }
+
+        .op-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .op-step-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-title-container">
+            <img src="Seal Options Capstone.png" alt="Dr. Wobbles Logo" class="seal-logo">
+            <h1 style="margin: 0;">Dr. Wobbles</h1>
+        </div>
+        <img src="666740e7559b77d7383224b4_Frame 27731.png" alt="Digital Lab Logo" class="digital-lab-logo">
+    </header>
+
+    <nav class="tab-nav">
+        <button class="tab-btn active" onclick="showTab('assembly')">Assembly Guide</button>
+        <button class="tab-btn" onclick="showTab('operating')">Operating Instructions</button>
+    </nav>
+
+    <!-- ASSEMBLY TAB -->
+    <div id="tab-assembly" class="tab-page active">
+
+        <p>Welcome! Select your build options below to get your custom assembly guide.</p>
+
+        <div class="config-panel">
+            <h3 style="margin-top: 0;">🛠️ Your Build Configuration</h3>
+            
+            <div class="config-group">
+                <p style="margin: 0 0 5px 0;"><strong>Sourcing Method:</strong></p>
+                <label><input type="radio" name="sourcing" value="kit" checked onchange="updateGuide()"> Digital Lab Kit</label>
+                <label><input type="radio" name="sourcing" value="diy" onchange="updateGuide()"> DIY Sourcing</label>
+            </div>
+
+            <div class="config-group">
+                <p style="margin: 0 0 5px 0;"><strong>Device Version:</strong></p>
+                <label><input type="radio" name="version" value="standard" checked onchange="updateGuide()"> Standard</label>
+                <label><input type="radio" name="version" value="rechargeable" onchange="updateGuide()"> Rechargeable</label>
+            </div>
+        </div>
+
+        <div id="instructions">
+
+            <div class="step-card">
+                <h2>Phase 1: Parts & Sourcing</h2>
+                
+                <div id="sourcing-kit">
+                    <p>You will receive all parts pre-packaged from the Digital Lab — no sourcing required.</p>
+                    <ul>
+                        <li>Request your complete kit here: <a href="#" class="placeholder">[Insert Digital Lab Link]</a></li>
+                    </ul>
+                </div>
+
+                <div id="sourcing-diy" class="hidden">
+                    <p>You are sourcing all parts yourself. Here is what you need:</p>
+                    <ul>
+                        <li><strong>Circuit Board:</strong> Order the circuit board and electrical components using our files here: <a href="PCBFiles.zip" class="placeholder">PCB Files</a>, <a href="BOM_PCB.xlsx" class="placeholder">PCB Bill of Materials</a></li>
+                        <li><strong>All Other Parts:</strong> Order everything else using our Parts List: <a href="Device_BOM.xslx" class="placeholder">Parts List</a></li>
+                    </ul>
+                    <h3>Female Connector Preparation</h3>
+                    <ol>
+                        <li>Cut your wires to the correct lengths (~ 6cm each).</li>
+                        <li>Strip a small section of insulation from each wire end.</li>
+                        <li>Crimp a connector pin onto each stripped wire end.</li>
+                        <li>For each connector housing, press one red and one black wire in until they click.</li>
+                    </ol>
+
+                    <h3>Soldering buttons, male connectors, and wires</h3>
+                    <ol>
+                        <li>Solder the microcontroller to the microcontroller square on the PCB.</li>
+                        <li>Solder 1 x 2.0 mm connector to the BAT port on the PCB.</li>
+                        <li>Solder 2 x 2.5 mm connectors to the A2 and A3 ports on the PCB.</li>
+                        <li>Solder the black connector wires to the middle pin on the button.</li>
+                        <li>Solder the A2 red connector wire to the button pin labeled "a".</li>
+                        <li>Solder the A3 red connector wire to the button pin labeled "b".</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <h2>Phase 2: Printer Set-up</h2>
+                <p>We have optimized these files for easy printing.</p>
+                <ul>
+                    <li><strong>Infill:</strong> 10% – 20%</li>
+                    <li><strong>Supports:</strong> Required</li>
+                    <li><strong>Orientation:</strong> Place flat on the printer bed.</li>
+                    <li><strong>Ready-to-print files:</strong> GCODE files for common printers are available here: <a href="#" class="placeholder">[Insert Sliced Files Link]</a></li>
+                </ul>
+
+                <div id="print-standard">
+                    <p><strong>Files:</strong> Download the Standard Enclosure print files here: <a href="#" class="placeholder">[Insert Standard STL Link]</a></p>
+                </div>
+                
+                <div id="print-rechargeable" class="hidden">
+                    <p><strong>Files:</strong> Download the Rechargeable Enclosure print files here: <a href="#" class="placeholder">[Insert Rechargeable STL Link]</a></p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <h2>Phase 3: Code & Connections</h2>
+                <h3>1. Loading the Software</h3>
+                <p>Download the software folder from our GitHub: <a href="drwobbles" class="placeholder">Software Folder</a>. Before loading the software, set up the Arduino environment and add the microcontroller by following this guide: <a href="https://learn.adafruit.com/adafruit-qt-py-esp32-s3/arduino-ide-setup-4mb-2mb-psram" target="_blank">Arduino IDE Setup Guide</a>. Then load the software onto the microcontroller before assembling the device.</p>
+                
+                <h3>2. Connecting Components</h3>
+                <p>Plug each component into the correct port on the microcontroller:</p>
+                <ul>
+                    <li><strong>Motor:</strong> Plug into <span class="placeholder">Port A1</span></li>
+                    <li><strong>Button "a":</strong> Plug into <span class="placeholder">Port A2</span></li>
+                    <li><strong>Button "b":</strong> Plug into <span class="placeholder">Port A3</span></li>
+                    <li><strong>Battery:</strong> Plug into <span class="placeholder">Port BAT</span></li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <h2>Phase 4: Final Assembly</h2>
+                <p>Follow these steps in order. Refer to the images for exact placement.</p>
+
+                <div class="assembly-step">
+                    <h3>1. Materials Overview</h3>
+                    <p>Lay out all your parts before starting: the two printed enclosure halves, circuit board, battery, motor, elastic bands, straps, and sticker.</p>
+                    <img src="IFU-Page-1.drawio.png" alt="All parts laid out">
+                </div>
+
+                <div class="assembly-step">
+                    <h3>2. Elastic Band Placement</h3>
+                    <p>Thread the elastic bands through the two slots on the back of the enclosure. Tie a knot on each end to hold them in place.</p>
+                    <img src="elasticband.png" alt="Placing the elastic bands">
+                </div>
+
+                <div class="assembly-step">
+                    <h3>3. Battery Insertion</h3>
+                    <p>Place the battery into the lower compartment of the enclosure.</p>
+                    <img src="IFU2-Page-2.jpg" alt="Battery placed in enclosure">
+                </div>
+
+                <div class="assembly-step">
+                    <h3>4. Motor Placement</h3>
+                    <p>Press the motor into its slot until it sits flat. Apply a small dot of hot glue or super glue around the base to hold it in place.</p>
+                    <img src="IFU2-Page-4.jpg" alt="Motor seated in slot">
+                </div>
+
+                <div class="assembly-step">
+                    <h3>5. Circuit Board Placement</h3>
+                    <p>Slide the circuit board into the slot above the battery. Apply a small dot of hot glue or super glue to hold it in place.</p>
+                    <img src="IFU2-Page-3.jpg" alt="Circuit board placed in enclosure">
+                </div>
+
+                <div class="assembly-step">
+                    <h3>6. Circuit Board Holder</h3>
+                    <p>Press the printed holder down over the circuit board to keep it in place.</p>
+                    <img src="IFU2-Page-5.jpg" alt="Circuit board holder pressed into place">
+                </div>
+
+                <div class="assembly-step">
+                    <h3>7. Wire Connections</h3>
+                    <p>Plug each connector into its matching port on the circuit board. Make sure each connector clicks in fully.</p>
+                    <img src="IFU2-Page-6.jpg" alt="Wire connection step">
+                </div>
+
+                <div class="assembly-step">
+                    <h3>8. Close the Enclosure</h3>
+                    <p>Line up the two halves of the enclosure and press them together. Check that no wires are caught in the seam. Twist to lock. Press the button firmly into the slot.</p>
+                    <img src="IFU2-Page-7.jpg" alt="Closing the device halves">
+                </div>
+
+                <div class="assembly-step">
+                    <h3>9. Strap Insertion</h3>
+                    <p>Thread each strap through the side loops, fold the end over, and sew it down.</p>
+                    <img src="strap.png" alt="Inserting the fabric straps">
+                </div>
+
+                <div class="assembly-step" style="margin-bottom: 10px;">
+                    <h3>10. Sticker Placement</h3>
+                    <p>Peel and apply the seal sticker to the front of the device.</p>
+                    <img src="Gemini_Generated_Image_hvqujohvqujohvqu.png" alt="Applying the final front sticker">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- OPERATING INSTRUCTIONS TAB -->
+    <div id="tab-operating" class="tab-page">
+
+        <div class="step-card">
+            <h2>Charging the Device</h2>
+            <ol class="op-steps">
+                <li>
+                    <span class="op-step-num">1</span>
+                    <span>Remove the battery from the bottom of the device.</span>
+                </li>
+                <li>
+                    <span class="op-step-num">2</span>
+                    <span>Plug the battery into the battery charger.</span>
+                </li>
+                <li>
+                    <span class="op-step-num">3</span>
+                    <span>Plug the battery charger into a power outlet using a USB-C cable.</span>
+                </li>
+                <li>
+                    <span class="op-step-num">4</span>
+                    <span>Allow the battery to charge for <span class="placeholder">[X hours]</span> from full depletion.</span>
+                </li>
+                <li>
+                    <span class="op-step-num">5</span>
+                    <span>Once fully charged, reinsert the battery into the bottom of the device and close the compartment.</span>
+                </li>
+            </ol>
+        </div>
+
+        <div class="step-card">
+            <h2>Using the Device</h2>
+            <ol class="op-steps">
+                <li>
+                    <span class="op-step-num">1</span>
+                    <span>Place the ice pack in the freezer for at least <span class="placeholder">[X minutes]</span> prior to use.</span>
+                </li>
+                <li>
+                    <span class="op-step-num">2</span>
+                    <span>Slot the ice pack into the elastic band on the device.</span>
+                </li>
+                <li>
+                    <span class="op-step-num">3</span>
+                    <span>Place Dr. Wobbles directly on the intended injection site. If needed, secure the hook-and-loop straps around the patient's limb to hold it in place.</span>
+                </li>
+                <li>
+                    <span class="op-step-num">4</span>
+                    <span>Hold in place for <span class="placeholder">[X seconds]</span> to allow the cold and vibration to take effect.</span>
+                </li>
+                <li>
+                    <span class="op-step-num">5</span>
+                    <span>Slide the device a few centimetres away from the injection site, toward the center of the body, to expose the site for injection. Keep the device on and in place during the procedure.</span>
+                </li>
+                <li>
+                    <span class="op-step-num">6</span>
+                    <span>Administer the injection.</span>
+                </li>
+                <li>
+                    <span class="op-step-num">7</span>
+                    <span>After use, disinfect the device by spraying with <span class="placeholder">[70% isopropyl alcohol / appropriate clinical disinfectant]</span> and allow to air dry.</span>
+                </li>
+            </ol>
+        </div>
+
+    </div>
+
+    <script>
+        function showTab(name) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-page').forEach(page => page.classList.remove('active'));
+            document.getElementById('tab-' + name).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function updateGuide() {
+            const sourcingOption = document.querySelector('input[name="sourcing"]:checked').value;
+            const versionOption = document.querySelector('input[name="version"]:checked').value;
+
+            if (sourcingOption === 'kit') {
+                document.getElementById('sourcing-kit').classList.remove('hidden');
+                document.getElementById('sourcing-diy').classList.add('hidden');
+            } else {
+                document.getElementById('sourcing-kit').classList.add('hidden');
+                document.getElementById('sourcing-diy').classList.remove('hidden');
+            }
+
+            if (versionOption === 'standard') {
+                document.getElementById('print-standard').classList.remove('hidden');
+                document.getElementById('print-rechargeable').classList.add('hidden');
+            } else {
+                document.getElementById('print-standard').classList.add('hidden');
+                document.getElementById('print-rechargeable').classList.remove('hidden');
+            }
+        }
+
+        updateGuide();
+    </script>
+</body>
+</html>
