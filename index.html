@@ -12,6 +12,9 @@
             --card-bg: #ffffff;
             --text-main: #334155;
             --border-color: #cddce3;
+            --warning-bg: #fff4e5;
+            --warning-border: #f59e0b;
+            --warning-text: #8f5a00;
         }
         
         body {
@@ -106,6 +109,28 @@
             border-radius: 8px;
             margin-top: 10px;
             border: 1px solid #e2e8f0;
+        }
+
+        /* Warning Boxes */
+        .warning-box {
+            background-color: var(--warning-bg);
+            border-left: 5px solid var(--warning-border);
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+            color: var(--warning-text);
+        }
+
+        .warning-box strong {
+            color: #b45309;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .warning-box ul {
+            margin: 0;
+            padding-left: 20px;
         }
 
         /* Tabs */
@@ -244,12 +269,20 @@
 
         <div id="instructions">
 
+        <div class="warning-box">
+            <strong>⚠️ CAUTION</strong>
+            <ul>
+                <li>Do not expose the circuitry of the device to water.</li>
+                <li>Device has pinch points present that can catch skin. Assembly must be completed by an adult.</li>
+            </ul>
+        </div>
+
         <div class="step-card">
             <h2>Video Tutorial</h2>
             <p>Watch our complete assembly and operation guide below before getting started.</p>
             <div class="video-container">
                 <video controls>
-                    <source src="Adobe Express - My Movie 6.mp4" type="video/mp4">
+                    <source src="YOUR_VIDEO_FILE_NAME.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -408,6 +441,12 @@
 
         <div class="step-card">
             <h2>Charging the Device</h2>
+            
+            <div class="warning-box">
+                <strong>⚠️ WARNING</strong>
+                Unplug the charger once charging is complete. Charging for an extended period of time increases the risk of electrical shock, fire and explosion.
+            </div>
+
             <ol class="op-steps">
                 <li>
                     <span class="op-step-num">1</span>
@@ -434,6 +473,12 @@
 
         <div class="step-card">
             <h2>Using the Device</h2>
+            
+            <div class="warning-box">
+                <strong>⚠️ WARNING</strong>
+                Do not place ice packs on the skin for more than 15 minutes.
+            </div>
+
             <ol class="op-steps">
                 <li>
                     <span class="op-step-num">1</span>
