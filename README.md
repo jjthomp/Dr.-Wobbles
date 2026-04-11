@@ -43,6 +43,12 @@ Contains the firmware for the Adafruit QTPY ESP32-S2 microcontroller.
 To set up the Arduino environment for the QTPY ESP32-S2, follow the official Adafruit guide:  
 👉 https://learn.adafruit.com/adafruit-qt-py-esp32-s3/arduino-ide-setup-4mb-2mb-psram
 
+### 📁 `/Docs`
+Contains the complete bill of materials and sticker design
+- Sticker design
+- Bill of materials
+
+> For assembly instructions, see the [Assembly Guide](#assembly--instructions-for-use) section below.
 ---
 
 ## Assembly & Instructions for Use
