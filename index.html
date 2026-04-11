@@ -183,6 +183,28 @@
             flex-shrink: 0;
             margin-top: 2px;
         }
+
+        /* Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -200,7 +222,6 @@
         <button class="tab-btn" onclick="showTab('operating')">Operating Instructions</button>
     </nav>
 
-    <!-- ASSEMBLY TAB -->
     <div id="tab-assembly" class="tab-page active">
 
         <p>Welcome! Select your build options below to get your custom assembly guide.</p>
@@ -222,6 +243,17 @@
         </div>
 
         <div id="instructions">
+
+        <div class="step-card">
+            <h2>Video Tutorial</h2>
+            <p>Watch our complete assembly and operation guide below before getting started.</p>
+            <div class="video-container">
+                <video controls>
+                    <source src="Adobe Express - My Movie 6.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
 
         <div class="step-card">
             <h2>Phase 1: Parts & Sourcing</h2>
@@ -372,7 +404,6 @@
         </div>
     </div>
 
-    <!-- OPERATING INSTRUCTIONS TAB -->
     <div id="tab-operating" class="tab-page">
 
         <div class="step-card">
