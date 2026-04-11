@@ -55,8 +55,8 @@ Contains the complete bill of materials and sticker design
 
 Full step-by-step assembly and usage guides are available online:
 
-- **Assembly Manual:** [link to assembly guide]
-- **Instructions for Use:** [link to instructions for use]
+- **Assembly Manual:** https://jjthomp.github.io/Dr.-Wobbles/
+- **Instructions for Use:** https://jjthomp.github.io/Dr.-Wobbles/
 
 ---
 
